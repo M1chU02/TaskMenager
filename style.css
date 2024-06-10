@@ -1,0 +1,950 @@
+:root {
+  --light-background: #2b2f35;
+  --dark-background: #1e2024;
+  --blue-color: #007fff;
+  --green-color: #23ce68;
+  --red-color: #ad2b2b;
+}
+
+body,
+* {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  margin: 5px;
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--blue-color);
+}
+
+::placeholder {
+  font-style: italic;
+}
+
+hr {
+  border: 5px solid var(--blue-color);
+}
+
+body {
+  background: var(--light-background);
+}
+
+.no_tasks {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
+  color: white;
+  font-family: "Rubik Mono One";
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.left {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  position: relative;
+}
+
+.left .tasks {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+  scroll-behavior: smooth;
+  overflow: auto;
+}
+
+.left .task {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--dark-background);
+  width: 100%;
+  border-radius: 24px;
+  padding: 25px;
+}
+
+.left .task .task_title_priority {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 30px;
+  max-width: 50%;
+}
+
+.left .task .task_title_priority h1 {
+  color: white;
+  font-family: "Rubik Mono One";
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  word-wrap: break-word;
+}
+
+.left .task .task_title_priority .priority_container {
+  display: flex;
+  gap: 25px;
+}
+
+.left .task .task_title_priority .priority_container p {
+  color: white;
+  text-align: center;
+  font-family: "Rubik Mono One";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.left .task .task_actions {
+  display: flex;
+  gap: 10px;
+}
+
+.left .task .task_actions .delete_task_btn {
+  height: 90px;
+}
+
+.left .currentTask {
+  background: var(--blue-color);
+}
+
+.add_task {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 140px;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 1.77%,
+    rgba(0, 0, 0, 0.5) 98.23%
+  );
+}
+
+.add_task .add_task_btn {
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: var(--blue-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  width: 100%;
+  color: white;
+}
+
+.header h2 {
+  font-family: "Rubik Mono One", sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.right {
+  width: 50%;
+  flex-grow: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  overflow: auto;
+}
+
+.right .main_info {
+  width: 100%;
+  background: var(--dark-background);
+  display: flex;
+  flex-direction: column;
+  border-radius: 24px;
+}
+
+.right .main_info .title_delete {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 30px;
+}
+
+.right .main_info h1 {
+  text-align: center;
+  color: white;
+  margin-top: 24px;
+  font-family: "Rubik Mono One", sans-serif;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.right .main_info .delete {
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.right .main_info .description_container {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  gap: 15px;
+}
+
+.right .main_info .description_container .description {
+  width: 100%;
+  min-height: 100px;
+  background: var(--light-background);
+  border-radius: 24px;
+  color: white;
+  font-family: "Prosto One";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 10px;
+}
+
+.right .main_info .task_actions {
+  width: 100%;
+  display: flex;
+  padding: 30px;
+  justify-content: space-between;
+}
+
+.right .main_info .task_actions .add_note_btn {
+  background: var(--blue-color);
+  width: 210px;
+  height: 75px;
+  border-radius: 15px;
+  color: white;
+  font-family: "Rubik Mono One";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+}
+
+.right .main_info .task_actions .add_note_btn img {
+  width: 40px;
+  aspect-ratio: 1;
+}
+
+.right .main_info .task_actions .priority_done {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.priority_select {
+  background: var(--light-background);
+  min-width: 170px;
+  height: 50%;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.priority_select option {
+  cursor: pointer;
+  background: var(--light-background);
+}
+
+.right .main_info .task_actions .priority_done img {
+  cursor: pointer;
+}
+
+.right .to_do_notes {
+  background: var(--dark-background);
+  width: 100%;
+  border-radius: 24px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.right .to_do_notes .to_do_container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.right .to_do_notes .to_do_container .to_do_list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.right .to_do_notes .to_do_container .new_to_do {
+  background: var(--light-background);
+  color: var(--blue-color);
+  min-height: 80px;
+  font-family: "Prosto One";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 24px;
+  border-radius: 24px;
+  cursor: pointer;
+}
+
+.right .to_do_notes .to_do_container .new_to_do #new_to_do_elements {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.right .to_do_notes .to_do_container .new_to_do #new_to_do_a {
+  width: 100%;
+  height: 100%;
+}
+
+.right .to_do_notes .to_do_container .x_icon {
+  max-width: 60px;
+  aspect-ratio: 1;
+  rotate: 45deg;
+  cursor: pointer;
+}
+
+.right .to_do_notes .to_do_container .new_to_do_task_input {
+  min-width: 60%;
+  height: 100%;
+  background: var(--light-background);
+  color: white;
+  font-size: larger;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid white;
+  flex-grow: 1;
+  padding: 10px 0;
+}
+
+.right .to_do_notes .to_do_container .submit_new_to_do_task {
+  cursor: pointer;
+  background: var(--blue-color);
+  border: none;
+  padding: 15px;
+  border-radius: 15px;
+  color: white;
+  font-family: "Rubik Mono One";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.right .to_do_notes .to_do_container .to_do_wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.right .to_do_notes .to_do_container .to_do_list .todo {
+  background: var(--light-background);
+  color: white;
+  min-height: 80px;
+  font-family: "Prosto One";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 24px;
+  border-radius: 24px;
+}
+
+.right .to_do_notes .to_do_container .to_do_list .todo img {
+  cursor: pointer;
+}
+
+.right .to_do_notes .to_do_container .to_do_list .todo #edit_to_do_elements {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.right .to_do_notes .to_do_container .to_do_list .todo .x_icon {
+  max-width: 60px;
+  aspect-ratio: 1;
+  rotate: 45deg;
+  cursor: pointer;
+}
+
+.right .to_do_notes .to_do_container .to_do_list .todo .edit_to_do_task_input {
+  min-width: 60%;
+  height: 100%;
+  background: var(--light-background);
+  color: white;
+  font-size: larger;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid white;
+  flex-grow: 1;
+  padding: 10px 0;
+}
+
+.right .to_do_notes .to_do_container .to_do_list .todo .submit_edit_to_do_task {
+  cursor: pointer;
+  background: var(--blue-color);
+  border: none;
+  padding: 15px;
+  border-radius: 15px;
+  color: white;
+  font-family: "Rubik Mono One";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.right .to_do_notes .notes_container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.right .to_do_notes .notes_container .notes {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.right .to_do_notes .notes_container .notes .note {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--light-background);
+  color: white;
+  font-family: "Prosto One";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border-radius: 24px;
+  padding: 24px;
+}
+
+.right .to_do_notes .notes_container .notes .note .note_content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.right
+  .to_do_notes
+  .notes_container
+  .notes
+  .note
+  .note_content
+  .note_title_actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.right .to_do_notes .notes_container .notes p.date {
+  color: var(--blue-color);
+  font-style: italic;
+  font-family: "Prosto One";
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.right .to_do_notes .notes_container .notes .note .note_actions {
+  display: flex;
+}
+
+.right .to_do_notes .notes_container .notes .note .note_actions img {
+  cursor: pointer;
+  height: 100%;
+}
+
+.right .to_do_notes .notes_container .notes .note p.note_content {
+  font-family: "Prosto One";
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  font-size: 32px;
+}
+
+#add_task_modal {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  height: 100%;
+}
+
+#add_task_modal #task_title_input {
+  width: 100%;
+  height: 60px;
+  border: none;
+  outline: none;
+  font-family: "Prosto One";
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: white;
+  background: var(--light-background);
+}
+
+#add_task_modal .modal_wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 100px;
+  height: 100%;
+}
+
+#add_task_modal .modal_wrapper .task_modal_description_container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#add_task_modal .modal_wrapper .task_modal_description_container h2 {
+  color: white;
+  font-family: "Rubik Mono One";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+#add_task_modal .modal_wrapper .task_modal_description_container textarea {
+  background: var(--light-background);
+  resize: none;
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  color: white;
+  font-family: "Prosto One";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 5px;
+}
+
+#add_task_modal
+  .modal_wrapper
+  .task_modal_description_container
+  textarea:focus {
+  outline: 1px solid var(--blue-color);
+}
+
+#add_task_modal .modal_wrapper .task_modal_priority_save_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#add_task_modal
+  .modal_wrapper
+  .task_modal_priority_save_container
+  .priority_select {
+  max-height: 30px;
+}
+
+#add_task_modal .modal_wrapper .task_modal_priority_save_container button {
+  font-family: "Rubik Mono One";
+  cursor: pointer;
+  background: var(--blue-color);
+  color: white;
+  border: none;
+  outline: none;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+#add_note_modal {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+#add_note_modal textarea {
+  width: 100%;
+  min-height: 100px;
+  flex-grow: 1;
+  background: var(--light-background);
+  resize: none;
+  border: none;
+  outline: none;
+  color: white;
+  font-family: "Prosto One";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 5px;
+}
+
+#add_note_modal textarea:focus {
+  outline: 1px solid var(--blue-color);
+}
+
+#add_note_modal input[type="button"] {
+  font-family: "Rubik Mono One";
+  cursor: pointer;
+  background: var(--blue-color);
+  color: white;
+  border: none;
+  outline: none;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+#edit_note_modal {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+#edit_note_modal textarea {
+  width: 100%;
+  min-height: 100px;
+  flex-grow: 1;
+  background: var(--light-background);
+  resize: none;
+  border: none;
+  outline: none;
+  color: white;
+  font-family: "Prosto One";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 5px;
+}
+
+#edit_note_modal textarea:focus {
+  outline: 1px solid var(--blue-color);
+}
+
+#edit_note_modal input[type="button"] {
+  font-family: "Rubik Mono One";
+  cursor: pointer;
+  background: var(--blue-color);
+  color: white;
+  border: none;
+  outline: none;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+#edit_task_modal {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+#edit_task_modal h2 {
+  color: #fff;
+  font-family: "Prosto One";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+#edit_task_modal #edit_task_title_input {
+  width: 100%;
+  height: 60px;
+  border: none;
+  outline: none;
+  font-family: "Prosto One";
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: white;
+  background: var(--light-background);
+}
+
+#edit_task_modal #edit_task_description_textarea {
+  width: 100%;
+  min-height: 100px;
+  flex-grow: 1;
+  background: var(--light-background);
+  resize: none;
+  border: none;
+  outline: none;
+  color: white;
+  font-family: "Prosto One";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 5px;
+}
+
+#edit_task_modal input[type="button"] {
+  font-family: "Rubik Mono One";
+  cursor: pointer;
+  background: var(--blue-color);
+  color: white;
+  border: none;
+  outline: none;
+  padding: 20px;
+  border-radius: 15px;
+  min-width: 170px;
+  align-self: flex-end;
+}
+
+#delete_task_modal,
+#delete_note_modal,
+#delete_todo_modal {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#delete_task_modal #delete_task_input,
+#delete_note_modal #delete_note_input,
+#delete_todo_modal #delete_todo_input {
+  width: 100%;
+  min-height: 60px;
+  border: none;
+  outline: none;
+  font-family: "Prosto One";
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: white;
+  background: var(--light-background);
+  text-align: center;
+  cursor: default;
+  text-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#delete_task_modal .buttons,
+#delete_note_modal .buttons,
+#delete_todo_modal .buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+#delete_task_modal .buttons input[type="button"]:first-child,
+#delete_note_modal .buttons input[type="button"]:first-child,
+#delete_todo_modal .buttons input[type="button"]:first-child {
+  font-family: "Rubik Mono One";
+  cursor: pointer;
+  background: var(--red-color);
+  color: white;
+  border: none;
+  outline: none;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+#delete_task_modal .buttons input[type="button"]:last-child,
+#delete_note_modal .buttons input[type="button"]:last-child,
+#delete_todo_modal .buttons input[type="button"]:last-child {
+  font-family: "Rubik Mono One";
+  cursor: pointer;
+  background: var(--blue-color);
+  color: white;
+  border: none;
+  outline: none;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.winbox {
+  background: var(--dark-background);
+  border-radius: 12px 12px 0 0;
+}
+
+.wb-header {
+  background: var(--light-background);
+  align-items: center;
+}
+
+.wb-drag {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.wb-title {
+  width: 100%;
+  font-family: "Prosto One";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+}
+
+.wb-body {
+  background: var(--dark-background);
+  color: white;
+  padding: 20px;
+}
+
+.wb-close {
+  color: var(--red-color);
+}
+
+@media screen and (max-width: 1900px) {
+  .left .task .task_title_priority h1 {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .task_actions {
+    transform: scale(0.7);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .wrapper {
+    flex-direction: column-reverse;
+  }
+
+  .left {
+    width: 100%;
+    text-align: center;
+    height: 30vh;
+  }
+
+  .right {
+    min-width: 100%;
+    height: 70vh;
+  }
+
+  .header h2 {
+    font-size: 24px;
+  }
+
+  .right .main_info h1 {
+    font-size: 32px;
+  }
+
+  .right .main_info .description_container .description {
+    font-size: 18px;
+    padding: 8px;
+  }
+
+  .right .to_do_notes .to_do_container .new_to_do {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .right .to_do_notes .to_do_container .new_to_do #new_to_do_a {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+  }
+
+  .right .to_do_notes .to_do_container .new_to_do .submit_new_to_do_task {
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .right .to_do_notes .to_do_container .to_do_list .todo {
+    font-size: 18px;
+    padding: 12px;
+  }
+
+  .right
+    .to_do_notes
+    .to_do_container
+    .to_do_list
+    .todo
+    .submit_edit_to_do_task {
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .right .to_do_notes .notes_container .notes .note {
+    font-size: 20px;
+    padding: 20px;
+  }
+}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/img/icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Prosto+One&family=Rubik+Mono+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Task Menager</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="left">
+        <div id="tasks" class="tasks"></div>
+        <span class="add_task">
+          <div class="add_task_btn" id="add_task_btn">
+            <img src="/img/plus.svg" alt="add task" class="white" />
+          </div>
+        </span>
+      </div>
+
+      <div class="right">
+        <div class="main_info">
+          <div class="title_delete">
+            <img src="/img/edit.svg" alt="delete" class="delete edit" />
+            <h1 id="task_title">Task title</h1>
+            <img src="/img/delete.svg" alt="delete" class="delete invisible" />
+          </div>
+
+          <div class="description_container">
+            <div class="header">
+              <h2>DESCRIPTION</h2>
+            </div>
+            <div class="description" id="description"></div>
+          </div>
+
+          <div class="task_actions">
+            <div class="add_note_btn" id="add_note_btn">
+              <img src="/img/plus.svg" />
+              <a>Add note</a>
+            </div>
+
+            <div class="priority_done">
+              <select id="priority_select" class="priority_select">
+                <option value="urgant">Urgant</option>
+                <option value="high">High</option>
+                <option value="normal" selected="selected">Normal</option>
+                <option value="low">Low</option>
+              </select>
+              <img
+                src="/img/unchecked.svg"
+                alt="task not done"
+                id="task_status"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="to_do_notes">
+          <div class="to_do_container">
+            <div class="header">
+              <h2>TO DO LIST</h2>
+            </div>
+            <div class="new_to_do" id="new_to_do">
+              <a id="new_to_do_a">Add new task</a>
+              <div id="new_to_do_elements" style="display: none">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 40 40"
+                  class="x_icon"
+                  id="exit_new_to_do"
+                >
+                  <use xlink:href="/img/plus.svg#plus"></use>
+                </svg>
+                <input
+                  type="text"
+                  id="new_to_do_task_input"
+                  class="new_to_do_task_input"
+                />
+                <button
+                  id="submit_new_to_do_task"
+                  class="submit_new_to_do_task"
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
+            <div class="to_do_list" id="to_do_list"></div>
+          </div>
+          <div class="notes_container">
+            <div class="header">
+              <h2>NOTES</h2>
+            </div>
+            <div class="notes"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="backstore" style="display: none">
+      <div id="add_task_modal">
+        <input type="text" id="task_title_input" placeholder="Title:" />
+        <div class="modal_wrapper">
+          <div class="task_modal_description_container">
+            <h2>DESCRIPTION</h2>
+            <textarea id="description_textarea"></textarea>
+          </div>
+          <div class="task_modal_priority_save_container">
+            <select id="add_task_priority_select" class="priority_select">
+              <option value="urgant">Urgant</option>
+              <option value="high">High</option>
+              <option value="normal" selected="selected">Normal</option>
+              <option value="low">Low</option>
+            </select>
+            <button id="submit_add_task_btn">SAVE</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="add_note_modal">
+        <textarea id="add_note_textarea" placeholder="New note..."></textarea>
+        <input type="button" value="SAVE" id="add_note_button" />
+      </div>
+
+      <div id="edit_note_modal">
+        <textarea id="edit_note_textarea"></textarea>
+        <input type="button" value="SAVE" id="edit_note_button" />
+      </div>
+
+      <div id="edit_task_modal">
+        <h2>Title</h2>
+        <input type="text" id="edit_task_title_input" />
+        <h2>Description</h2>
+        <textarea id="edit_task_description_textarea"></textarea>
+        <input type="button" value="SAVE" />
+      </div>
+
+      <div id="delete_todo_modal">
+        <p id="delete_todo_input">
+          Are you sure you want to delete this to do task?
+        </p>
+        <div class="buttons">
+          <input type="button" value="DELETE" id="accept" />
+          <input type="button" value="CANCEL" id="cancel" />
+        </div>
+      </div>
+
+      <div id="delete_note_modal">
+        <p id="delete_note_input">Are you sure you want to delete this note?</p>
+        <div class="buttons">
+          <input type="button" value="DELETE" id="accept" />
+          <input type="button" value="CANCEL" id="cancel" />
+        </div>
+      </div>
+
+      <div id="delete_task_modal">
+        <p id="delete_task_input">Are you sure you want to delete this task?</p>
+        <div class="buttons">
+          <input type="button" value="DELETE" id="accept" />
+          <input type="button" value="CANCEL" id="cancel" />
+        </div>
+      </div>
+    </div>
+
+    <script src="winbox.boundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

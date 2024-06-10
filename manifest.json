@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Task Menager",
+  "version": "1.0",
+  "description": "Simple task menager web app",
+  "permissions": ["tabs"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "/img/icon.png",
+      "48": "/img/icon.png",
+      "128": "/img/icon.png"
+    }
+  },
+  "icons": {
+    "16": "/img/icon.png",
+    "48": "/img/icon.png",
+    "128": "/img/icon.png"
+  }
+}
